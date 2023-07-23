@@ -1,0 +1,39 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+main{
+    background-image: linear-gradient(blue,rgb(15, 152, 215));
+    display: grid;
+    place-items: center;
+}
+h1{
+    color: darkturquoise;
+    text-decoration: underline;
+    padding: 3rem;
+}
+form{
+   background-color: aquamarine;
+    display: flex;
+    flex-direction: column;
+    padding: 8rem;
+    border-radius: 20px;
+    gap: 10px;
+}
+input{
+    height: 30px;
+    width: 90%;
+    border-radius: 20px 10px;
+    border: 2px solid black;
+    color: rgb(5, 64, 202);
+    padding: 4px;
+}
+button{
+    padding: 10px 20px;
+    background-color: rgb(18, 153, 212);
+    color: blue;
+    cursor: pointer;
+    border-radius: 8px 16px;
+    margin-top: 2rem;
+}
