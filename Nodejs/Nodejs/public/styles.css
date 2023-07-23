@@ -37,3 +37,8 @@ button{
     border-radius: 8px 16px;
     margin-top: 2rem;
 }
+.error{
+    color: red;
+    font: 1rem;
+    font-weight: 800;
+}

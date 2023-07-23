@@ -4,6 +4,7 @@ import path from "path";
 import mongoose from "mongoose";
 import cookieParser from "cookie-parser";
 import jwt from "jsonwebtoken";
+import bycrpt from 'bcrypt';
 
 // if not connected go to bin folder open cmd and get the ip address
 mongoose
@@ -184,7 +185,7 @@ app.post("/register", async (req, res) => {
   const { name, Email, PhoneNo, password } = req.body;
   console.log(req.body);
   let user = await User.findOne({ Email });
-
+   const hashedPassword = await bycrpt.hash(password,10);
   if (user) {
     return res.redirect("/login");
   }
@@ -192,7 +193,7 @@ app.post("/register", async (req, res) => {
     name,
     Email,
     PhoneNo,
-    password,
+    password : hashedPassword,
   });
 
   //Cookies is short time "i am in"
@@ -216,10 +217,10 @@ app.post("/login", async (req, res) => {
     return res.redirect("/register");
   }
 
-  const isMatch = user.password === password;
+  const isMatch = await bycrpt.compare(password,user.password);
   console.log(isMatch);
-  if (!isMatch) {
-    return res.render("login");
+  if (!isMatch) { 
+    return res.render("login",{Email,message : "Invalid Password"});
   } else if (isMatch) {
     const token = jwt.sign({ _id: user._id }, "absciubob");
     res.cookie("Token", token, {

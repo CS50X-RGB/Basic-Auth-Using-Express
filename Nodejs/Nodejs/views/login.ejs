@@ -15,10 +15,11 @@
         <form method="post" action="/login">
             <h2>Login</h2>         
             <label>Email</label>
-            <input type="email" name="Email" placeholder="Enter your email" !important/>
-            <input type="number" name="Number" placeholder="Enter your Phone No." !important/>
+            <input type="email" name="Email" placeholder="Enter your email" value="<%= locals.Email %>" !important/>
+            <input type="number" name="PhoneNo" placeholder="Enter your Phone No." !important/>
             <label>Password</label>
             <input type="password" name="password" placeholder="password" !important/>
+            <p class="error"><%= locals.message %></p>
             <button type="submit">Login</button>
         </form>
 </body>
